@@ -1,0 +1,31 @@
+/* hiển thị theo dạng column, rớt dòng khi cần thiết */
+.container-gallery {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+    margin-top: 30px;
+  /* fixed height, cao hơn độ cao của item cao nhất */
+    height: 1200px; 
+  }
+  
+  .item-gallery {
+    width: 32%;
+    margin-bottom: 2%;
+  }
+  
+  /* sắp xếp lại theo từng dòng */
+  .item-gallery:nth-child(3n+1) { order: 1; }
+  /* // set order = 1 cho các item 1, 4, 7, 10,... */
+  .item-gallery:nth-child(3n+2) { order: 2; }
+  /* // set order = 1 cho các item 2, 5, 8, 11,... */
+  .item-gallery:nth-child(3n) { order: 3; }
+  /* // set order = 1 cho các item 3, 6, 9, 12,... */
+  
+  /* bắt buộc chèn vào cột mới */
+  .container-gallery::before,
+  .container-gallery::after {
+    content: "";
+    flex-basis: 100%;
+    width: 0;
+    order: 2;
+  }
